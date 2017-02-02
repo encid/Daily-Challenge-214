@@ -17,7 +17,7 @@ namespace DailyChallenge214
 
         static double CalcStdDev(string vals)
         {
-            // split values into array
+            // split values into list
             var temp = vals.Split(' ').ToList();
             var values = new List<int>();
             temp.ForEach(t => values.Add(Convert.ToInt32(t)));
@@ -27,7 +27,7 @@ namespace DailyChallenge214
             values.ForEach(v => total += v);
             double mean = total / values.Count;
 
-            // for each value in array, calculate the difference between it and mean, square it
+            // for each value in list, calculate the difference between it and mean, square it
             // and calculate the sum of these values
             double sumDiff = 0;
             values.ForEach(v => sumDiff += Math.Pow(v - mean, 2));
@@ -35,7 +35,7 @@ namespace DailyChallenge214
             // divide by number of values (yields variance)
             double variance = sumDiff / values.Count;
             
-            // squareroot of variance (yields standard deviation)
+            // squareroot of variance (yields standard deviation) to four decimal digits
 
             return Math.Round(Math.Sqrt(variance), 4);
         }

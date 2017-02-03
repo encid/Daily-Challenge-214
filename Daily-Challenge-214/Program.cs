@@ -23,20 +23,17 @@ namespace DailyChallenge214
             temp.ForEach(t => values.Add(Convert.ToInt32(t)));
 
             // calculate the mean of all values
-            double total = 0;            
-            values.ForEach(v => total += v);
-            double mean = total / values.Count;
+            double mean = values.Sum() / values.Count;
 
             // for each value in list, calculate the difference between it and mean, square it
             // and calculate the sum of these values
             double sumDiff = 0;
-            values.ForEach(v => sumDiff += Math.Pow(v - mean, 2));
+            values.ForEach(v => sumDiff += (v - mean)*(v - mean));
 
             // divide by number of values (yields variance)
             double variance = sumDiff / values.Count;
             
             // squareroot of variance (yields standard deviation) to four decimal digits
-
             return Math.Round(Math.Sqrt(variance), 4);
         }
     }
